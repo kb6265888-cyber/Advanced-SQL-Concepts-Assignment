@@ -14,13 +14,12 @@ This repository contains the practical implementation of Advanced SQL concepts i
 ---
 
 ## 📁 Part A: Common Table Expressions (CTEs)
-
 ### 1. Database Setup & Initial Data
 * **SQL Query:** 
 ```sql
 SELECT * FROM Sales;
 
-Output(image 1):
+![Database Setup](./1_sales_table_data.jpg
 
 
 2. Simple CTE
