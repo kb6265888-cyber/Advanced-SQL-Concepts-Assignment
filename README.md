@@ -19,7 +19,7 @@ This repository contains the practical implementation of Advanced SQL concepts i
 ```sql
 SELECT * FROM Sales;
 
-![Database Setup](./1_sales_table_data.jpg
+1_sales_table_data.jpg
 
 
 2. Simple CTE
@@ -31,7 +31,7 @@ SELECT * FROM Sales;
 )
 SELECT * FROM ElectronicsProducts;
 
-Output(image 2):
+2_simple_cte.jpg
 
 
 3. Multiple CTEs
