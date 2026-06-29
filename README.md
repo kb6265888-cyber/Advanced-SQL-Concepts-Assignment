@@ -4,7 +4,7 @@
 ---
 
 ## 👤 Academic Information
-* **Student ID:** 31491
+* **Student ID:** 31491/2025
 
 ---
 
