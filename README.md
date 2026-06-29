@@ -18,16 +18,6 @@ This repository contains the practical implementation of Advanced SQL concepts i
 * **SQL Query:** 
 ```sql
 SELECT * FROM Sales;
-![IMage](1_sales_table_data.jpg)
-
-2. Simple CTE
-​SQL Query:
-    WITH ElectronicsProducts AS (
-    SELECT ProductID, ProductName, Price 
-    FROM Products 
-    WHERE Category = 'Electronics'
-)
-SELECT * FROM ElectronicsProducts;
 
 ![IMage](2_simple_cte.jpg)
 
