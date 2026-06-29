@@ -16,29 +16,28 @@ This repository contains the practical implementation of Advanced SQL concepts i
 ## 📁 Part A: Common Table Expressions (CTEs)
 
 ### 1. Database Setup & Initial Data
-* **SQL Query:** ```sql
+* **SQL Query:** 
+```sql
 SELECT * FROM Sales;
 
-Ootput(image 1):
+Output(image 1):
 
 
-2.Simple CTE
+2. Simple CTE
 ​SQL Query:
-
-WITH ElectronicsProducts AS (
+    WITH ElectronicsProducts AS (
     SELECT ProductID, ProductName, Price 
     FROM Products 
     WHERE Category = 'Electronics'
 )
 SELECT * FROM ElectronicsProducts;
 
-Ootput(image 2):
+Output(image 2):
 
 
-3.Multiple CTEs
+3. Multiple CTEs
 ​SQL Query:
-
-WITH KigaliCustomers AS (
+    WITH KigaliCustomers AS (
     SELECT CustomerID FROM Customers WHERE Region = 'Kigali'
 ),
 HighValueSales AS (
@@ -48,26 +47,25 @@ SELECT h.SaleID, h.TotalAmount
 FROM HighValueSales h
 JOIN KigaliCustomers k ON h.CustomerID = k.CustomerID;
 
-Ootput(image 3):
+Output(image 3):
 
 
-4.Recursive CTE
+4. Recursive CTE
 ​SQL Query
-
-WITH MonthsOfYear (MonthNumber) AS (
+    WITH MonthsOfYear (MonthNumber) AS (
     SELECT 1 FROM DUAL
     UNION ALL
     SELECT MonthNumber + 1 FROM MonthsOfYear WHERE MonthNumber < 12
 )
 SELECT MonthNumber FROM MonthsOfYear;
 
-Ootput(image 4):
+Output(image 4):
 
 
-5.CTE with Aggregation
+5. CTE with Aggregation
 ​SQL Query:
 
-WITH CustomerSpending AS (
+    WITH CustomerSpending AS (
     SELECT CustomerID, SUM(TotalAmount) AS TotalSpent
     FROM Sales
     GROUP BY CustomerID
@@ -76,13 +74,12 @@ SELECT c.CustomerName, s.TotalSpent
 FROM Customers c
 JOIN CustomerSpending s ON c.CustomerID = s.CustomerID;
 
-Ootput(image 5):
+Output(image 5):
 
 
-6.CTE Combined with JOIN
+6. CTE Combined with JOIN
 ​SQL Query:
-
-WITH DetailedSales AS (
+    WITH DetailedSales AS (
     SELECT SaleID, CustomerID, ProductID, TotalAmount FROM Sales
 )
 SELECT ds.SaleID, c.CustomerName, p.ProductName, ds.TotalAmount
@@ -90,56 +87,63 @@ FROM DetailedSales ds
 JOIN Customers c ON ds.CustomerID = c.CustomerID
 JOIN Products p ON ds.ProductID = p.ProductID;
 
-Ootput(image 6):
+Output(image 6):
 
 
 📁 Part B: Window Functions
 ​7. Ranking Functions
 ​SQL Query:
-
-SELECT SaleID, TotalAmount,
+    SELECT SaleID, TotalAmount,
 ROW_NUMBER() OVER (ORDER BY TotalAmount DESC) AS RowNum,
 RANK() OVER (ORDER BY TotalAmount DESC) AS SalesRank,
 DENSE_RANK() OVER (ORDER BY TotalAmount DESC) AS DenseRank,
 PERCENT_RANK() OVER (ORDER BY TotalAmount DESC) AS PercentRank
 FROM Sales;
 
-Ootput(image 7):
+Output(image 7):
 
 
-8.Aggregate Window Functions
+8. Aggregate Window Functions
 ​SQL Query:
-
-SELECT SaleID, CustomerID, TotalAmount, 
+    SELECT SaleID, CustomerID, TotalAmount, 
 SUM(TotalAmount) OVER (PARTITION BY CustomerID) AS Total, 
 AVG(TotalAmount) OVER (PARTITION BY CustomerID) AS AvgAmt, 
 MIN(TotalAmount) OVER (PARTITION BY CustomerID) AS MinAmt, 
 MAX(TotalAmount) OVER (PARTITION BY CustomerID) AS MaxAmt 
 FROM Sales;
 
-Ootput(image 8):
+Output(image 8):
 
 
-9.Navigation Functions
+9. Navigation Functions
 ​SQL Query:
-
-SELECT SaleID, SaleDate, TotalAmount, 
+    SELECT SaleID, SaleDate, TotalAmount, 
 LAG(TotalAmount, 1) OVER (ORDER BY SaleDate) AS Prev, 
 LEAD(TotalAmount, 1) OVER (ORDER BY SaleDate) AS Next 
 FROM Sales;
 
-Ootput(image 9):
+Output(image 9):
 
-
-10.Distribution Functions
+10. Distribution Functions
 ​SQL Query:
-
-SELECT SaleID, TotalAmount, 
+    SELECT SaleID, TotalAmount, 
 NTILE(3) OVER (ORDER BY TotalAmount DESC) AS Tier, 
 CUME_DIST() OVER (ORDER BY TotalAmount DESC) AS Dist 
 FROM Sales;
+    
+Output(image 10):
 
-Ootput(image 10):
+
+
+
+
+
+
+
+
+
+
+
 
 
 
